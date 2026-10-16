@@ -1,0 +1,15 @@
+artifact_uri: file:///D:/MTech/SEM3/MLOps/Assignment1/heart-disease-mlops/mlruns/201692383624238263/501fd295b2814ec4a65b05e983f6d910/artifacts
+end_time: 1791919943151
+entry_point_name: ''
+experiment_id: '201692383624238263'
+lifecycle_stage: active
+run_id: 501fd295b2814ec4a65b05e983f6d910
+run_name: Final-Model-Selection
+run_uuid: 501fd295b2814ec4a65b05e983f6d910
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1791919943117
+status: 3
+tags: []
+user_id: Arvind Ramkumar

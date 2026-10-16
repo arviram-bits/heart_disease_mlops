@@ -1,0 +1,15 @@
+artifact_uri: file:///D:/MTech/SEM3/MLOps/Assignment1/heart-disease-mlops/mlruns/201692383624238263/f88d5743a28d4e5aaae9d60bb41a36d4/artifacts
+end_time: 1791920432762
+entry_point_name: ''
+experiment_id: '201692383624238263'
+lifecycle_stage: active
+run_id: f88d5743a28d4e5aaae9d60bb41a36d4
+run_name: upbeat-hen-411
+run_uuid: f88d5743a28d4e5aaae9d60bb41a36d4
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1791920275154
+status: 3
+tags: []
+user_id: Arvind Ramkumar

@@ -1,0 +1,10 @@
+Metric,Value
+raw_rows,303
+raw_columns,14
+clean_rows,303
+clean_columns,14
+duplicates_removed,0
+missing_target_rows_removed,0
+remaining_missing_values,0
+no_disease_count,164
+disease_present_count,139

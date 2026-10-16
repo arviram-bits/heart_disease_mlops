@@ -1,0 +1,15 @@
+artifact_uri: file:///D:/MTech/SEM3/MLOps/Assignment1/heart-disease-mlops/mlruns/201692383624238263/00fbffb6ddb54e1fa139d21f102b8ec1/artifacts
+end_time: 1791920244632
+entry_point_name: ''
+experiment_id: '201692383624238263'
+lifecycle_stage: active
+run_id: 00fbffb6ddb54e1fa139d21f102b8ec1
+run_name: popular-hare-304
+run_uuid: 00fbffb6ddb54e1fa139d21f102b8ec1
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1791920220898
+status: 3
+tags: []
+user_id: Arvind Ramkumar

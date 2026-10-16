@@ -1,0 +1,15 @@
+artifact_uri: file:///D:/MTech/SEM3/MLOps/Assignment1/heart-disease-mlops/mlruns/201692383624238263/8c8f6792416f481496fd6988d9bc3c83/artifacts
+end_time: 1791919939753
+entry_point_name: ''
+experiment_id: '201692383624238263'
+lifecycle_stage: active
+run_id: 8c8f6792416f481496fd6988d9bc3c83
+run_name: Logistic Regression
+run_uuid: 8c8f6792416f481496fd6988d9bc3c83
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1791919927817
+status: 3
+tags: []
+user_id: Arvind Ramkumar
