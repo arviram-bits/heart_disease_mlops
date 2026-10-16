@@ -1,0 +1,149 @@
+[NbConvertApp] Converting notebook notebooks/02_model_training.ipynb to notebook
+[IPKernelApp] WARNING | Kernel is running over TCP without encryption. All communication (including code and outputs) is sent in plain text and is susceptible to eavesdropping. Use IPC transport or launch with kernel manager-provisioned CurveZMQ keys to enable transport encryption.
+Traceback (most recent call last):
+  File "/home/cloud/miniconda3/bin/jupyter-nbconvert", line 6, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/home/cloud/miniconda3/lib/python3.12/site-packages/jupyter_core/application.py", line 284, in launch_instance
+    super().launch_instance(argv=argv, **kwargs)
+  File "/home/cloud/miniconda3/lib/python3.12/site-packages/traitlets/config/application.py", line 1080, in launch_instance
+    app.start()
+  File "/home/cloud/miniconda3/lib/python3.12/site-packages/nbconvert/nbconvertapp.py", line 420, in start
+    self.convert_notebooks()
+  File "/home/cloud/miniconda3/lib/python3.12/site-packages/nbconvert/nbconvertapp.py", line 597, in convert_notebooks
+    self.convert_single_notebook(notebook_filename)
+  File "/home/cloud/miniconda3/lib/python3.12/site-packages/nbconvert/nbconvertapp.py", line 563, in convert_single_notebook
+    output, resources = self.export_single_notebook(
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cloud/miniconda3/lib/python3.12/site-packages/nbconvert/nbconvertapp.py", line 487, in export_single_notebook
+    output, resources = self.exporter.from_filename(
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cloud/miniconda3/lib/python3.12/site-packages/nbconvert/exporters/exporter.py", line 201, in from_filename
+    return self.from_file(f, resources=resources, **kw)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cloud/miniconda3/lib/python3.12/site-packages/nbconvert/exporters/exporter.py", line 220, in from_file
+    return self.from_notebook_node(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cloud/miniconda3/lib/python3.12/site-packages/nbconvert/exporters/notebook.py", line 36, in from_notebook_node
+    nb_copy, resources = super().from_notebook_node(nb, resources, **kw)
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cloud/miniconda3/lib/python3.12/site-packages/nbconvert/exporters/exporter.py", line 154, in from_notebook_node
+    nb_copy, resources = self._preprocess(nb_copy, resources)
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cloud/miniconda3/lib/python3.12/site-packages/nbconvert/exporters/exporter.py", line 353, in _preprocess
+    nbc, resc = preprocessor(nbc, resc)
+                ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cloud/miniconda3/lib/python3.12/site-packages/nbconvert/preprocessors/base.py", line 48, in __call__
+    return self.preprocess(nb, resources)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cloud/miniconda3/lib/python3.12/site-packages/nbconvert/preprocessors/execute.py", line 103, in preprocess
+    self.preprocess_cell(cell, resources, index)
+  File "/home/cloud/miniconda3/lib/python3.12/site-packages/nbconvert/preprocessors/execute.py", line 124, in preprocess_cell
+    cell = self.execute_cell(cell, index, store_history=True)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cloud/miniconda3/lib/python3.12/site-packages/jupyter_core/utils/__init__.py", line 165, in wrapped
+    return loop.run_until_complete(inner)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/cloud/miniconda3/lib/python3.12/asyncio/base_events.py", line 691, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/home/cloud/miniconda3/lib/python3.12/site-packages/nbclient/client.py", line 1062, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/home/cloud/miniconda3/lib/python3.12/site-packages/nbclient/client.py", line 918, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+PROJECT_ROOT = Path.cwd()
+
+if PROJECT_ROOT.name == "notebooks":
+    PROJECT_ROOT = PROJECT_ROOT.parent
+
+# Store experiment records inside the project
+TRACKING_DIR = PROJECT_ROOT / "mlruns"
+TRACKING_DIR.mkdir(parents=True, exist_ok=True)
+
+mlflow.set_tracking_uri(TRACKING_DIR.as_uri())
+
+# Create a named experiment
+mlflow.set_experiment("Heart-Disease-Classification")
+
+print("MLflow tracking URI:", mlflow.get_tracking_uri())
+print("Experiment configured successfully!")
+------------------
+
+
+[31m---------------------------------------------------------------------------[39m
+[31mMlflowException[39m                           Traceback (most recent call last)
+[36mCell[39m[36m [39m[32mIn[11][39m[32m, line 13[39m
+[32m      9[39m 
+[32m     10[39m mlflow.set_tracking_uri(TRACKING_DIR.as_uri())
+[32m     11[39m 
+[32m     12[39m [38;5;66;03m# Create a named experiment[39;00m
+[32m---> [39m[32m13[39m mlflow.set_experiment([33m"Heart-Disease-Classification"[39m)
+[32m     14[39m 
+[32m     15[39m print([33m"MLflow tracking URI:"[39m, mlflow.get_tracking_uri())
+[32m     16[39m print([33m"Experiment configured successfully!"[39m)
+
+[36mFile [39m[32m/home/cloud/miniconda3/lib/python3.12/site-packages/mlflow/tracking/fluent.py:202[39m, in [36mset_experiment[39m[34m(experiment_name, experiment_id, trace_location)[39m
+[32m    194[39m [38;5;28;01mif[39;00m (experiment_name [38;5;129;01mis[39;00m [38;5;129;01mnot[39;00m [38;5;28;01mNone[39;00m [38;5;129;01mand[39;00m experiment_id [38;5;129;01mis[39;00m [38;5;129;01mnot[39;00m [38;5;28;01mNone[39;00m) [38;5;129;01mor[39;00m (
+[32m    195[39m     experiment_name [38;5;129;01mis[39;00m [38;5;28;01mNone[39;00m [38;5;129;01mand[39;00m experiment_id [38;5;129;01mis[39;00m [38;5;28;01mNone[39;00m
+[32m    196[39m ):
+[32m    197[39m     [38;5;28;01mraise[39;00m MlflowException(
+[32m    198[39m         message=[33m"[39m[33mMust specify exactly one of: `experiment_id` or `experiment_name`.[39m[33m"[39m,
+[32m    199[39m         error_code=INVALID_PARAMETER_VALUE,
+[32m    200[39m     )
+[32m--> [39m[32m202[39m client = [30;43mTrackingServiceClient[39;49m[30;43m([39;49m[30;43m_resolve_tracking_uri[39;49m[30;43m([39;49m[30;43m)[39;49m[30;43m)[39;49m
+[32m    204[39m is_newly_created = [38;5;28;01mFalse[39;00m
+[32m    206[39m [38;5;28;01mwith[39;00m _experiment_lock:
+
+[36mFile [39m[32m/home/cloud/miniconda3/lib/python3.12/site-packages/mlflow/tracking/_tracking_service/client.py:98[39m, in [36mTrackingServiceClient.__init__[39m[34m(self, tracking_uri)[39m
+[32m     93[39m [38;5;28mself[39m.tracking_uri = tracking_uri
+[32m     94[39m [38;5;66;03m# NB: Fetch the tracking store (`self.store`) upon client initialization to ensure that[39;00m
+[32m     95[39m [38;5;66;03m# the tracking URI is valid and the store can be properly resolved. We define `store` as a[39;00m
+[32m     96[39m [38;5;66;03m# property method to ensure that the client is serializable, even if the store is not[39;00m
+[32m     97[39m [38;5;66;03m# self.store[39;00m
+[32m---> [39m[32m98[39m [30;43mself[39;49m[30;43m.[39;49m[30;43mstore[39;49m
+
+[36mFile [39m[32m/home/cloud/miniconda3/lib/python3.12/site-packages/mlflow/tracking/_tracking_service/client.py:102[39m, in [36mTrackingServiceClient.store[39m[34m(self)[39m
+[32m    100[39m [38;5;129m@property[39m
+[32m    101[39m [38;5;28;01mdef[39;00m [34mstore[39m([38;5;28mself[39m):
+[32m--> [39m[32m102[39m     [38;5;28;01mreturn[39;00m [30;43mutils[39;49m[30;43m.[39;49m[30;43m_get_store[39;49m[30;43m([39;49m[30;43mself[39;49m[30;43m.[39;49m[30;43mtracking_uri[39;49m[30;43m)[39;49m
+
+[36mFile [39m[32m/home/cloud/miniconda3/lib/python3.12/site-packages/mlflow/tracking/_tracking_service/utils.py:267[39m, in [36m_get_store[39m[34m(store_uri, artifact_uri)[39m
+[32m    266[39m [38;5;28;01mdef[39;00m [34m_get_store[39m(store_uri=[38;5;28;01mNone[39;00m, artifact_uri=[38;5;28;01mNone[39;00m):
+[32m--> [39m[32m267[39m     [38;5;28;01mreturn[39;00m [30;43m_tracking_store_registry[39;49m[30;43m.[39;49m[30;43mget_store[39;49m[30;43m([39;49m[30;43mstore_uri[39;49m[30;43m,[39;49m[30;43m [39;49m[30;43martifact_uri[39;49m[30;43m)[39;49m
+
+[36mFile [39m[32m/home/cloud/miniconda3/lib/python3.12/site-packages/mlflow/tracking/_tracking_service/registry.py:45[39m, in [36mTrackingStoreRegistry.get_store[39m[34m(self, store_uri, artifact_uri)[39m
+[32m     42[39m [38;5;28;01mfrom[39;00m [34;01mmlflow[39;00m[34;01m.[39;00m[34;01mtracking[39;00m[34;01m.[39;00m[34;01m_tracking_service[39;00m [38;5;28;01mimport[39;00m utils
+[32m     44[39m resolved_store_uri = utils._resolve_tracking_uri(store_uri)
+[32m---> [39m[32m45[39m [38;5;28;01mreturn[39;00m [30;43mself[39;49m[30;43m.[39;49m[30;43m_get_store_with_resolved_uri[39;49m[30;43m([39;49m[30;43mresolved_store_uri[39;49m[30;43m,[39;49m[30;43m [39;49m[30;43martifact_uri[39;49m[30;43m)[39;49m
+
+[36mFile [39m[32m/home/cloud/miniconda3/lib/python3.12/site-packages/mlflow/tracking/_tracking_service/registry.py:56[39m, in [36mTrackingStoreRegistry._get_store_with_resolved_uri[39m[34m(self, resolved_store_uri, artifact_uri)[39m
+[32m     54[39m [38;5;28;01mwith[39;00m _building_store_lock:
+[32m     55[39m     builder = [38;5;28mself[39m.get_store_builder(resolved_store_uri)
+[32m---> [39m[32m56[39m     [38;5;28;01mreturn[39;00m [30;43mbuilder[39;49m[30;43m([39;49m[30;43mstore_uri[39;49m[30;43m=[39;49m[30;43mresolved_store_uri[39;49m[30;43m,[39;49m[30;43m [39;49m[30;43martifact_uri[39;49m[30;43m=[39;49m[30;43martifact_uri[39;49m[30;43m)[39;49m
+
+[36mFile [39m[32m/home/cloud/miniconda3/lib/python3.12/site-packages/mlflow/tracking/_tracking_service/utils.py:181[39m, in [36m_get_file_store[39m[34m(store_uri, **_)[39m
+[32m    178[39m [38;5;28;01mdef[39;00m [34m_get_file_store[39m(store_uri, **_):
+[32m    179[39m     [38;5;28;01mfrom[39;00m [34;01mmlflow[39;00m[34;01m.[39;00m[34;01mstore[39;00m[34;01m.[39;00m[34;01mtracking[39;00m[34;01m.[39;00m[34;01mfile_store[39;00m [38;5;28;01mimport[39;00m FileStore
+[32m--> [39m[32m181[39m     [38;5;28;01mreturn[39;00m [30;43mFileStore[39;49m[30;43m([39;49m[30;43mstore_uri[39;49m[30;43m,[39;49m[30;43m [39;49m[30;43mstore_uri[39;49m[30;43m)[39;49m
+
+[36mFile [39m[32m/home/cloud/miniconda3/lib/python3.12/site-packages/mlflow/store/tracking/file_store.py:225[39m, in [36mFileStore.__init__[39m[34m(self, root_directory, artifact_root_uri)[39m
+[32m    223[39m [38;5;28msuper[39m().[34m__init__[39m()
+[32m    224[39m [38;5;28;01mif[39;00m [38;5;129;01mnot[39;00m MLFLOW_ALLOW_FILE_STORE.get():
+[32m--> [39m[32m225[39m     [38;5;28;01mraise[39;00m MlflowException(
+[32m    226[39m         [33m"[39m[33mThe filesystem tracking backend (e.g., [39m[33m'[39m[33m./mlruns[39m[33m'[39m[33m) is in maintenance mode [39m[33m"[39m
+[32m    227[39m         [33m"[39m[33mand will not receive further updates. Please migrate to a [39m[33m"[39m
+[32m    228[39m         [33m"[39m[33mdatabase backend (e.g., [39m[33m'[39m[33msqlite:///mlflow.db[39m[33m'[39m[33m) to access the latest MLflow [39m[33m"[39m
+[32m    229[39m         [33m"[39m[33mfeatures. The `mlflow migrate-filestore` tool migrates your existing data [39m[33m"[39m
+[32m    230[39m         [33m"[39m[33mlosslessly. See [39m[33m"[39m
+[32m    231[39m         [33m"[39m[33mhttps://mlflow.org/docs/latest/self-hosting/migrate-from-file-store [39m[33m"[39m
+[32m    232[39m         [33m"[39m[33mfor migration guidance. If the filesystem backend is required for your [39m[33m"[39m
+[32m    233[39m         [33m"[39m[33mworkflow, set `MLFLOW_ALLOW_FILE_STORE=true` to opt out of this exception.[39m[33m"[39m,
+[32m    234[39m         error_code=INVALID_PARAMETER_VALUE,
+[32m    235[39m     )
+[32m    236[39m [38;5;28mself[39m.root_directory = local_file_uri_to_path(root_directory [38;5;129;01mor[39;00m _default_root_dir())
+[32m    237[39m [38;5;28;01mif[39;00m [38;5;129;01mnot[39;00m artifact_root_uri:
+
+[31mMlflowException[39m: The filesystem tracking backend (e.g., './mlruns') is in maintenance mode and will not receive further updates. Please migrate to a database backend (e.g., 'sqlite:///mlflow.db') to access the latest MLflow features. The `mlflow migrate-filestore` tool migrates your existing data losslessly. See https://mlflow.org/docs/latest/self-hosting/migrate-from-file-store for migration guidance. If the filesystem backend is required for your workflow, set `MLFLOW_ALLOW_FILE_STORE=true` to opt out of this exception.
+
