@@ -6,3 +6,5 @@ mlflow
 matplotlib
 seaborn
 ucimlrepo
+fastapi
+uvicorn[standard]
