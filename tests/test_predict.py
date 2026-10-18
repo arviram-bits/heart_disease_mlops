@@ -1,78 +1,23 @@
 
-from pathlib import Path
+import numpy as np
+import pytest
 
-import joblib
-import pandas as pd
-
-# Project paths
-PROJECT_ROOT = Path(__file__).resolve().parents[1]
-MODEL_PATH = (
-    PROJECT_ROOT / "artifacts" / "heart_disease_pipeline.joblib"
-)
-
-# Input features expected by the trained model
-FEATURES = [
-    "age", "trestbps", "chol", "thalach", "oldpeak",
-    "sex", "cp", "fbs", "restecg",
-    "exang", "slope", "ca", "thal"
-]
+from src.predict import FEATURES, predict_patient
 
 
-def load_model():
-    """Load the saved preprocessing and classification pipeline."""
-    if not MODEL_PATH.exists():
-        raise FileNotFoundError(
-            f"Model artifact not found: {MODEL_PATH}"
-        )
+class DummyModel:
+    """A fake classifier for testing inference logic."""
 
-    return joblib.load(MODEL_PATH)
+    def predict(self, X):
+        return np.array([1])
+
+    def predict_proba(self, X):
+        return np.array([[0.20, 0.80]])
 
 
-def predict_patient(patient_data, model=None):
-    """
-    Predict the binary class for one patient.
-
-    patient_data must contain all 13 input features.
-    """
-    missing = set(FEATURES) - set(patient_data.keys())
-    extra = set(patient_data.keys()) - set(FEATURES)
-
-    if missing:
-        raise ValueError(f"Missing features: {sorted(missing)}")
-
-    if extra:
-        raise ValueError(f"Unexpected features: {sorted(extra)}")
-
-    # Ensure the same feature names and order as training
-    patient_df = pd.DataFrame(
-        [[patient_data[col] for col in FEATURES]],
-        columns=FEATURES
-    )
-
-    if patient_df.isna().any().any():
-        raise ValueError("Patient input must not contain missing values.")
-
-    if model is None:
-        model = load_model()
-
-    prediction = int(model.predict(patient_df)[0])
-    probabilities = model.predict_proba(patient_df)[0]
-
+@pytest.fixture
+def valid_patient():
     return {
-        "prediction": prediction,
-        "label": (
-            "Disease present" if prediction == 1
-            else "No disease detected"
-        ),
-        "confidence": float(probabilities[prediction]),
-        "probability_disease_present": float(probabilities[1])
-    }
-
-
-if __name__ == "__main__":
-    # Example values for software testing only.
-    # These are not a real patient record or clinical assessment.
-    sample_patient = {
         "age": 55,
         "trestbps": 130,
         "chol": 240,
@@ -85,8 +30,40 @@ if __name__ == "__main__":
         "exang": 0,
         "slope": 2,
         "ca": 0,
-        "thal": 3
+        "thal": 3,
     }
 
-    result = predict_patient(sample_patient)
-    print(result)
+
+def test_valid_prediction(valid_patient):
+    result = predict_patient(valid_patient, model=DummyModel())
+
+    assert result["prediction"] == 1
+    assert result["label"] == "Disease present"
+    assert result["confidence"] == pytest.approx(0.80)
+    assert result["probability_disease_present"] == pytest.approx(0.80)
+
+
+def test_missing_feature_is_rejected(valid_patient):
+    valid_patient.pop("age")
+
+    with pytest.raises(ValueError, match="Missing features"):
+        predict_patient(valid_patient, model=DummyModel())
+
+
+def test_unexpected_feature_is_rejected(valid_patient):
+    valid_patient["unknown_feature"] = 123
+
+    with pytest.raises(ValueError, match="Unexpected features"):
+        predict_patient(valid_patient, model=DummyModel())
+
+
+def test_missing_value_is_rejected(valid_patient):
+    valid_patient["chol"] = np.nan
+
+    with pytest.raises(ValueError, match="must not contain missing"):
+        predict_patient(valid_patient, model=DummyModel())
+
+
+def test_all_expected_features_are_defined():
+    assert len(FEATURES) == 13
+    assert len(set(FEATURES)) == 13
