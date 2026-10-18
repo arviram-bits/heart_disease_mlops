@@ -8,3 +8,4 @@ seaborn
 ucimlrepo
 fastapi
 uvicorn[standard]
+prometheus-fastapi-instrumentator
