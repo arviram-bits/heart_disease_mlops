@@ -1,0 +1,3 @@
+model,cv_roc_auc,test_accuracy,test_roc_auc,best_parameters
+Logistic Regression,0.9024931590148981,0.8852459016393442,0.9664502164502166,{'classifier__C': 1}
+Random Forest,0.9017122169296081,0.8852459016393442,0.9512987012987013,"{'classifier__max_depth': 5, 'classifier__n_estimators': 200}"

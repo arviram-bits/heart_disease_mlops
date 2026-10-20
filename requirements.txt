@@ -1,6 +1,6 @@
 numpy
 pandas
-scikit-learn==1.5.0
+scikit-learn==1.9.1
 joblib
 mlflow
 matplotlib
