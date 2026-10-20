@@ -1,0 +1,14 @@
+artifact_uri: file:///home/s2025af05030/workspace/Git_code/heart_disease_mlops/mlruns/758264563410064299/e88d4a789025436e80de9245470f4cb8/artifacts
+end_time: 1792308170301
+entry_point_name: ''
+experiment_id: '758264563410064299'
+lifecycle_stage: active
+run_id: e88d4a789025436e80de9245470f4cb8
+run_name: Random Forest
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1792308169685
+status: 3
+tags: []
+user_id: s2025af05030

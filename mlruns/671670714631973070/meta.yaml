@@ -1,0 +1,9 @@
+artifact_location: file:///home/s2025af05030/workspace/Git_code/heart_disease_mlops/mlruns/671670714631973070
+creation_time: 1792307864195
+effective_trace_archival_retention: null
+experiment_id: '671670714631973070'
+last_update_time: 1792307864195
+lifecycle_stage: active
+name: Heart-Disease-Classification-expirement
+trace_location: null
+workspace: default

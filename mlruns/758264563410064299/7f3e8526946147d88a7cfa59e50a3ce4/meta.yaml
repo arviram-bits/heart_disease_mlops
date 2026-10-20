@@ -1,0 +1,14 @@
+artifact_uri: file:///home/s2025af05030/workspace/Git_code/heart_disease_mlops/mlruns/758264563410064299/7f3e8526946147d88a7cfa59e50a3ce4/artifacts
+end_time: 1792503150993
+entry_point_name: ''
+experiment_id: '758264563410064299'
+lifecycle_stage: active
+run_id: 7f3e8526946147d88a7cfa59e50a3ce4
+run_name: Final-Model-Selection
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1792503150521
+status: 3
+tags: []
+user_id: s2025af05030

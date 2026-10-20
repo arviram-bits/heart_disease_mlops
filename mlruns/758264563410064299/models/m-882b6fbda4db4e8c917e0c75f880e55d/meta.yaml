@@ -1,0 +1,10 @@
+artifact_location: file:///home/s2025af05030/workspace/Git_code/heart_disease_mlops/mlruns/758264563410064299/models/m-882b6fbda4db4e8c917e0c75f880e55d/artifacts
+creation_timestamp: 1792308170391
+experiment_id: '758264563410064299'
+last_updated_timestamp: 1792308171934
+model_id: m-882b6fbda4db4e8c917e0c75f880e55d
+model_type: null
+name: model
+source_run_id: null
+status: 3
+status_message: null

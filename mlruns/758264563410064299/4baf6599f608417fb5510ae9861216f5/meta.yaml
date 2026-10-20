@@ -1,0 +1,14 @@
+artifact_uri: file:///home/s2025af05030/workspace/Git_code/heart_disease_mlops/mlruns/758264563410064299/4baf6599f608417fb5510ae9861216f5/artifacts
+end_time: 1792308978580
+entry_point_name: ''
+experiment_id: '758264563410064299'
+lifecycle_stage: active
+run_id: 4baf6599f608417fb5510ae9861216f5
+run_name: Logistic Regression
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1792308978020
+status: 3
+tags: []
+user_id: s2025af05030

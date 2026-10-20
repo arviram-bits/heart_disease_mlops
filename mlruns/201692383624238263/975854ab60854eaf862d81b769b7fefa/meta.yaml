@@ -1,0 +1,14 @@
+artifact_uri: file:///D:/MTech/SEM3/MLOps/Assignment1/heart-disease-mlops/mlruns/201692383624238263/975854ab60854eaf862d81b769b7fefa/artifacts
+end_time: 1792306641533
+entry_point_name: ''
+experiment_id: '201692383624238263'
+lifecycle_stage: active
+run_id: 975854ab60854eaf862d81b769b7fefa
+run_name: Logistic Regression
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1792306641099
+status: 4
+tags: []
+user_id: s2025af05030
